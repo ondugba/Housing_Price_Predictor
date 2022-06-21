@@ -1,4 +1,4 @@
-,id,date,price,bedrooms,bathrooms,sqft_living,sqft_lot,floors,waterfront,view,condition,grade,sqft_above,sqft_basement,yr_built,yr_renovated,zipcode,lat,long,sqft_living15,sqft_lot15,was_renovated,sqft_basement2
+id,date,price,bedrooms,bathrooms,sqft_living,sqft_lot,floors,waterfront,view,condition,grade,sqft_above,sqft_basement,yr_built,yr_renovated,zipcode,lat,long,sqft_living15,sqft_lot15,was_renovated,sqft_basement2
 0,7129300520,10/13/2014,221900.0,3,1.0,1180,5650,1.0,NO,NONE,Average,7 Average,1180,0.0,1955,1955.0,98178,47.5112,-122.257,1340,5650,False,0
 1,6414100192,12/9/2014,538000.0,3,2.25,2570,7242,2.0,NO,NONE,Average,7 Average,2170,400.0,1951,1991.0,98125,47.721,-122.319,1690,7639,True,400
 2,5631500400,2/25/2015,180000.0,2,1.0,770,10000,1.0,NO,NONE,Average,6 Low Average,770,0.0,1933,1933.0,98028,47.7379,-122.233,2720,8062,False,0
