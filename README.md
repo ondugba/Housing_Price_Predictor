@@ -63,11 +63,18 @@ With additional input from Open Door, we could further limit the scope of the mo
 
 For additional info, contact 
 
+
+
 Alex: alexfitzgerald90@gmail.com
+
 Ogo: ogo.ndugba@gmail.com
+
 Yuhkai: yuhkulele@gmail.com
 
+
+
 Repository Contents
+
 data
 images
 working notebooks
