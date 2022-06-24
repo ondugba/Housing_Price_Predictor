@@ -1,285 +1,41 @@
-# Phase 2 Project Description
-
-Another module down - you're almost half way there!
-
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-v2-3/main/halfway-there.gif)
-
-All that remains in Phase 2 is to put your newfound data science skills to use with a large project!
-
-In this project description, we will cover:
-
-* Project Overview: the project goal, audience, and dataset
-* Deliverables: the specific items you are required to produce for this project
-* Grading: how your project will be scored
-* Getting Started: guidance for how to begin working
-
-## Project Overview
-
-For this project, you will use multiple linear regression modeling to analyze house sales in a northwestern county.
+Phase 2 Project 
+### Overview
+We constructed a linear regression model through an iterative process to determine how house characteristics correlated with sale price. The model was trained and tested on a dataset containing 21,597 sales of houses in King County, Washington from May 2014 to May 2015. This model can be used by real estate companies, such as Every Door Real Estate, to determine appropriate housing prices from a house's features. Setting the right price for a house can improve sales and comissions for that company. We used recursive feature elimination with cross-validation to decide which features to include in our model. Our final model had an  𝑅2  of 0.80, explaining of the variance in price. The RMSE, the average error of our model in units of price, was $161,112. Two of our key measures were renovations and home condition. All else held equal, a house that has been renovated has a mean price of $20,000 greater than houses that were not renovated. All else held equal, a house in very good condition has a mean price of $54,000 greater than average.
 
 ### Business Problem
+In the housing market, home sellers and realtors have different goals. A seller's ultimate goal is to sell the house at the highest price. A real estate agent's goal is to sell a higher volume of properties in order to maximize commissions. There is a fine balance between these two goals: the agent aims to sell the property as quickly as possible, but at a high enough value to satisfy their client. A realistic understanding of home prices is a necessity to optimize this tradeoff.
 
-It is up to you to define a stakeholder and business problem appropriate to this dataset.
+Our client is Every Door Real Estate, a real estate company in Seattle, Washington. Every Door Real Estate represents individuals selling their moderately price homes. This project aims at developing a linear regression model to help Every Door understand how different home features correlate with home prices. The model is constructed using historical home sales in King County, Washington. Every Door can use this model to determine an appropriate range of values for a home based upon its characteristics. This information can be used to determine how much a home is valued on the market and whether a home seller is over- or under-valuing their property.
 
-If you are struggling to define a stakeholder, we recommend you complete a project for a real estate agency that helps homeowners buy and/or sell homes. A business problem you could focus on for this stakeholder is the need to provide advice to homeowners about how home renovations might increase the estimated value of their homes, and by what amount.
+### Data Understanding
+For this analysis, we will utilize the "King County Housing Price from May 2014- May 2015" created by the Center for Spatial Data Science (https://spatial.uchicago.edu). It contains 21,597 entries with 21 different columns about home sales in the Seattle metropolitan area. We've included some descriptive statistics. This dataset provides us with information suitable for linear regression analysis to predict home prices in the Seattle metroplitan area. This robust dataset contains information about previous home selling prices along with multiple features of the home at time of sale. One limitation of this dataset - is that it represents a single year of data, another limitation is that it isnt current data. Ideally to make relevant and accurate predictions we'd need data that is current. Even if this data is not particularly useful at captuing current market trends, it is still useful at helping us evaluate if linear regression is a good fit to model these relationships.
 
-### The Data
+### Conclusion
+Our home price prediction model helps improve agency commissions for Every Door Real Estate’s by solving the problem of competing incentives between home seller and listing agency. While traditional approaches to valuing homes can lead to sellers over-valuing their homes and dragging out the sale process as a result, our home prediction model prices homes to sell which improves the volume of sales the agency is able to process. Our model provides statistical backing to agents as they push back on unrealistic client expectations. Additionally, our model identifies categories of home improvement that boost a home’s value which improves client satisfaction and commission value.
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this assignment's GitHub repository. The description of the column names can be found in `column_names.md` in the same folder. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions about what the data means.
+### Data
+To build a model suited for the demands of Every Door Real Estate, a Seattle based real estate agency, we analyzed a data set of 22K home sales from the Seattle Metro area between 2014 and 2015.
 
-It is up to you to decide what data from this dataset to use and how to use it. If you are feeling overwhelmed or behind, we recommend you **ignore** some or all of the following features:
+### Model Approach Knowing the model would be deployed by agents in their work with homeowners, we needed to produce a model that agents could use to accurately estimate the value of a client’s home and provide insight into what factors led to their estimate while pointing to potential home improvements to boost the predicted value. We tested 7 iterations of our model looking for the right combination of home attributes to give us a balance these factors
 
-* `date`
-* `view`
-* `sqft_above`
-* `sqft_basement`
-* `yr_renovated`
-* `zipcode`
-* `lat`
-* `long`
-* `sqft_living15`
-* `sqft_lot15`
+### Prediction accuracy (R2)
+Prediction precision (variance between train & test)
+Statistical significance (p-values of our coefficients)
+Alignment with assumptions of linear regressions
+Linearity: linear relationship between the response variable (Y) and predictor (X)
+Homoscedasticity: residuals are evenly spread across range of predicted values
+Independence: observations are independent of each other
+Normality: model residuals should follow a normal distribution
+Ability to draw inferential conclusions from the coefficients
+Coefficients that were in the purview of homeowners to improve
+Our final model included the features; 'sqft_living', 'waterfront','bedrooms', 'was_renovated', 'bed_bath_ratio','ratio_sqft_living_lot','sqft_living_to_bathroom_ratio', 'condition', and 'zipcode'
 
-### Key Points
+### Model Results
+Our final model has an mean R2 of 0.81 and 0.78 for the train and test respectively giving the Every Door Real Estate the power to predict about 80% of the fluctuation in home value based on criteria they pass into the model. Our root mean squared error is $ 161,112 meaning our home price prediction off by $161,112 on average which is reasonable given the range of home prices we trained our data on ($78 K to $7.7MM). Our model is precise with small differences in the R2 between our train and test split. Each of our model coefficients are statistically significant with P-values significantly less than 0.05 Our model conforms with each of the assumptions for linear regressions except some issues with colinearity
 
-* **Your goal in regression modeling is to yield findings to support relevant recommendations. Those findings should include a metric describing overall model performance as well as at least two regression model coefficients.** As you explore the data and refine your stakeholder and business problem definitions, make sure you are also thinking about how a linear regression model adds value to your analysis. "The assignment was to use linear regression" is not an acceptable answer! You can also use additional statistical techniques other than linear regression, so long as you clearly explain why you are using each technique.
+### Limitations & Next Steps
+Our model has a 20% error. With further feature engineering we could reduce our error and create a more predictive model. Specifically, we would further explore the interaction between home condition and renovation to eliminate potential collinearity.
 
-* **You should demonstrate an iterative approach to modeling.** This means that you must build multiple models. Begin with a basic model, evaluate it, and then provide justification for and proceed to a new model. After you finish refining your models, you should provide 1-3 paragraphs in the notebook discussing your final model.
+As mentioned in our introduction, we analyzed 1 year of sales data from 2014 to 2015, with additional and more recent data we could update the model to be more relevant to today’s market.
 
-* **Data visualization and analysis are no longer explicit project requirements, but they are still very important.** In Phase 1, your project stopped earlier in the CRISP-DM process. Now you are going a step further, to modeling. Data visualization and analysis will help you build better models and tell a better story to your stakeholders.
-
-## Deliverables
-
-There are three deliverables for this project:
-
-* A **non-technical presentation**
-* A **Jupyter Notebook**
-* A **GitHub repository**
-
-The deliverables requirements are almost the same as in the Phase 1 Project, and you can review those extended descriptions [here](https://github.com/learn-co-curriculum/dsc-phase-1-project-v2-3#deliverables). In general, everything is the same except the "Data Visualization" and "Data Analysis" requirements have been replaced by "Modeling" and "Regression Results" requirements.
-
-### Non-Technical Presentation
-
-Recall that the non-technical presentation is a slide deck presenting your analysis to ***business stakeholders***, and should be presented live as well as submitted in PDF form on Canvas.
-
-We recommend that you follow this structure, although the slide titles should be specific to your project:
-
-1. Beginning
-    - Overview
-    - Business and Data Understanding
-2. Middle
-    - **Modeling**
-    - **Regression Results**
-3. End
-    - Recommendations
-    - Next Steps
-    - Thank you
-
-Make sure that your discussion of modeling and regression results is geared towards a non-technical audience! Assume that their prior knowledge of regression modeling is minimal. You don't need to explain how linear regression works, but you should explain why linear regression is useful for the problem context. Make sure you translate any metrics or coefficients into their plain language implications.
-
-The graded elements for the non-technical presentation are the same as in [Phase 1](https://github.com/learn-co-curriculum/dsc-phase-1-project-v2-3#deliverables).
-
-### Jupyter Notebook
-
-Recall that the Jupyter Notebook is a notebook that uses Python and Markdown to present your analysis to a ***data science audience***. You will submit the notebook in PDF format on Canvas as well as in `.ipynb` format in your GitHub repository.
-
-The graded elements for the Jupyter Notebook are:
-
-* Business Understanding
-* Data Understanding
-* Data Preparation
-* **Modeling**
-* **Regression Results**
-* Code Quality
-
-### GitHub Repository
-
-Recall that the GitHub repository is the cloud-hosted directory containing all of your project files as well as their version history.
-
-The requirements are the same as in [Phase 1](https://github.com/learn-co-curriculum/dsc-phase-1-project-v2-3#github-repository), except for the required sections in the `README.md`.
-
-For this project, the `README.md` file should contain:
-
-* Overview
-* Business and Data Understanding
-  * Explain your stakeholder audience here
-* **Modeling**
-* **Regression Results**
-* Conclusion
-
-Just like in Phase 1, the `README.md` file should be the bridge between your non technical presentation and the Jupyter Notebook. It should not contain the code used to develop your analysis, but should provide a more in-depth explanation of your methodology and analysis than what is described in your presentation slides.
-
-## Grading
-
-***To pass this project, you must pass each project rubric objective.*** The project rubric objectives for Phase 2 are:
-
-1. Attention to Detail
-2. Statistical Communication
-3. Data Preparation Fundamentals
-4. Linear Modeling
-
-### Attention to Detail
-
-Just like in Phase 1, this rubric objective is based on your completion of checklist items. ***In Phase 2, you need to complete 70% (7 out of 10) or more of the checklist elements in order to pass the Attention to Detail objective.***
-
-**NOTE THAT THE PASSING BAR IS HIGHER IN PHASE 2 THAN IT WAS IN PHASE 1!**
-
-The standard will increase with each Phase, until you will be required to complete all elements to pass Phase 5 (Capstone).
-
-#### Exceeds Objective
-
-80% or more of the project checklist items are complete
-
-#### Meets Objective (Passing Bar)
-
-70% of the project checklist items are complete
-
-#### Approaching Objective
-
-60% of the project checklist items are complete
-
-#### Does Not Meet Objective
-
-50% or fewer of the project checklist items are complete
-
-### Statistical Communication
-
-Recall that communication is one of the key data science "soft skills". In Phase 2, we are specifically focused on Statistical Communication. We define Statistical Communication as:
-
-> Communicating **results of statistical analyses** to diverse audiences via writing and live presentation
-
-Note that this is the same as in Phase 1, except we are replacing "basic data analysis" with "statistical analyses".
-
-High-quality Statistical Communication includes rationale, results, limitations, and recommendations:
-
-* **Rationale:** Explaining why you are using statistical analyses rather than basic data analysis
-  * For example, why are you using regression coefficients rather than just a graph?
-  * What about the problem or data is suitable for this form of analysis?
-  * For a data science audience, this includes your reasoning for the changes you applied while iterating between models.
-* **Results:** Describing the overall model metrics and feature coefficients
-  * You need at least one overall model metric (e.g. r-squared or RMSE) and at least two feature coefficients.
-  * For a business audience, make sure you connect any metrics to real-world implications. You do not need to get into the details of how linear regression works.
-  * For a data science audience, you don't need to explain what a metric is, but make sure you explain why you chose that particular one.
-* **Limitations:** Identifying the limitations and/or uncertainty present in your analysis
-  * This could include p-values/alpha values, confidence intervals, assumptions of linear regression, missing data, etc.
-  * In general, this should be more in-depth for a data science audience and more surface-level for a business audience.
-* **Recommendations:** Interpreting the model results and limitations in the context of the business problem
-  * What should stakeholders _do_ with this information?
-
-#### Exceeds Objective
-
-Communicates the rationale, results, limitations, and specific recommendations of statistical analyses
-
-> See above for extended explanations of these terms.
-
-#### Meets Objective (Passing Bar)
-
-Successfully communicates the results of statistical analyses without any major errors
-
-> The minimum requirement is to communicate the _results_, meaning at least one overall model metric (e.g. r-squared or RMSE) as well as at least two feature coefficients. See the Approaching Objective section for an explanation of what a "major error" means.
-
-#### Approaching Objective
-
-Communicates the results of statistical analyses with at least one major error
-
-> A major error means that some aspect of your explanation is fundamentally incorrect. For example, if a feature coefficient is negative and you say that an increase in that feature results in an increase of the target, that would be a major error. Another example would be if you say that the feature with the highest coefficient is the "most statistically significant" while ignoring the p-value. One more example would be reporting a coefficient that is not statistically significant, rather than saying "no statistically significant linear relationship was found"
-
-> "**If a coefficient's t-statistic is not significant, don't interpret it at all.** You can't be sure that the value of the corresponding parameter in the underlying regression model isn't really zero." _DeVeaux, Velleman, and Bock (2012), Stats: Data and Models, 3rd edition, pg. 801_. Check out [this website](https://web.ma.utexas.edu/users/mks/statmistakes/TOC.html) for extensive additional examples of mistakes using statistics.
-
-> The easiest way to avoid making a major error is to have someone double-check your work. Reach out to peers on Slack and ask them to confirm whether your interpretation makes sense!
-
-#### Does Not Meet Objective
-
-Does not communicate the results of statistical analyses
-
-> It is not sufficient to just display the entire results summary. You need to pull out at least one overall model metric (e.g. r-squared, RMSE) and at least two feature coefficients, and explain what those numbers mean.
-
-### Data Preparation Fundamentals
-
-We define this objective as:
-
-> Applying appropriate **preprocessing** and feature engineering steps to tabular data in preparation for statistical modeling
-
-The two most important components of preprocessing for the Phase 2 project are:
-
-* **Handling Missing Values:** Missing values may be present in the features you want to use, either encoded as `NaN` or as some other value such as `"?"`. Before you can build a linear regression model, make sure you identify and address any missing values using techniques such as dropping or replacing data.
-* **Handling Non-Numeric Data:** A linear regression model needs all of the features to be numeric, not categorical. For this project, ***be sure to pick at least one non-numeric feature and try including it in a model.*** You can identify that a feature is currently non-numeric if the type is `object` when you run `.info()` on your dataframe. Once you have identified the non-numeric features, address them using techniques such as ordinal or one-hot (dummy) encoding.
-
-There is no single correct way to handle either of these situations! Use your best judgement to decide what to do, and be sure to explain your rationale in the Markdown of your notebook.
-
-Feature engineering is encouraged but not required for this project.
-
-#### Exceeds Objective
-
-Goes above and beyond with data preparation, such as feature engineering or merging in outside datasets
-
-> One example of feature engineering could be using the `date` feature to create a new feature called `season`, which represents whether the home was sold in Spring, Summer, Fall, or Winter.
-
-> One example of merging in outside datasets could be finding data based on ZIP Code, such as household income or walkability, and joining that data with the provided CSV.
-
-#### Meets Objective (Passing Bar)
-
-Successfully prepares data for modeling, including converting at least one non-numeric feature into ordinal or binary data and handling missing data as needed
-
-> As a reminder, you can identify the non-numeric features by calling `.info()` on the dataframe and looking for type `object`.
-
-> Your final model does not necessarily need to include any features that were originally non-numeric, but you need to demonstrate your ability to handle this type of data.
-
-#### Approaching Objective
-
-Prepares some data successfully, but is unable to utilize non-numeric data
-
-> If you simply subset the dataframe to only columns with type `int64` or `float64`, your model will run, but you will not pass this objective.
-
-#### Does Not Meet Objective
-
-Does not prepare data for modeling
-
-### Linear Modeling
-
-According to [Kaggle's 2020 State of Data Science and Machine Learning Survey](https://www.kaggle.com/kaggle-survey-2020), linear and logistic regression are the most popular machine learning algorithms, used by 83.7% of data scientists. They are small, fast models compared to some of the models you will learn later, but have limitations in the kinds of relationships they are able to learn.
-
-In this project you are required to use linear regression as the primary statistical analysis, although you are free to use additional statistical techniques as appropriate.
-
-#### Exceeds Objective
-
-Goes above and beyond in the modeling process, such as recursive feature selection
-
-#### Meets Objective (Passing Bar)
-
-Successfully builds a baseline model as well as at least one iterated model, and correctly extracts insights from a final model without any major errors
-
-> We are looking for you to (1) create a baseline model, (2) iterate on that model, making adjustments that are supported by regression theory or by descriptive analysis of the data, and (3) select a final model and report on its metrics and coefficients
-
-> Ideally you would include written justifications for each model iteration, but at minimum the iterations must be _justifiable_
-
-> For an explanation of "major errors", see the description below
-
-#### Approaching Objective
-
-Builds multiple models with at least one major error
-
-> The number one major error to avoid is including the target as one of your features. For example, if the target is `price` you should NOT make a "price per square foot" feature, because that feature would not be available if you didn't already know the price.
-
-> Other examples of major errors include: using a target other than `price`, attempting only simple linear regression (not multiple linear regression), dropping multiple one-hot encoded columns without explaining the resulting baseline, or using a unique identifier (`id` in this dataset) as a feature.
-
-#### Does Not Meet Objective
-
-Does not build multiple linear regression models
-
-## Getting Started
-
-Please start by reviewing the contents of this project description. If you have any questions, please ask your instructor ASAP.
-
-Next, you will need to complete the [***Project Proposal***](#project_proposal) which must be reviewed by your instructor before you can continue with the project.
-
-Here are some suggestions for creating your GitHub repository:
-
-1. Fork the [Phase 2 Project Repository](https://github.com/learn-co-curriculum/dsc-phase-2-project-v2-3), clone it locally, and work in the `student.ipynb` file. Make sure to also add and commit a PDF of your presentation to your repository with a file name of `presentation.pdf`.
-2. Or, create a new repository from scratch by going to [github.com/new](https://github.com/new) and copying the data files from the Phase 2 Project Repository into your new repository.
-   - Recall that you can refer to the [Phase 1 Project Template](https://github.com/learn-co-curriculum/dsc-project-template) as an example structure
-   - This option will result in the most professional-looking portfolio repository, but can be more complicated to use. So if you are getting stuck with this option, try forking the project repository instead
-
-## Summary
-
-This is your first modeling project! Take what you have learned in Phase 2 to create a project with a more sophisticated analysis than you completed in Phase 1. You will build on these skills as we move into the predictive machine learning mindset in Phase 3. You've got this!
+With additional input from Open Door, we could further limit the scope of the model to focus on their target market which would produce a more limited but more accurate model.
