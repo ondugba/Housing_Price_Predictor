@@ -16,7 +16,8 @@ Our home price prediction model helps improve agency commissions for Every Door 
 ### Data
 To build a model suited for the demands of Every Door Real Estate, a Seattle based real estate agency, we analyzed a data set of 22K home sales from the Seattle Metro area between 2014 and 2015.
 
-### Model Approach Knowing the model would be deployed by agents in their work with homeowners, we needed to produce a model that agents could use to accurately estimate the value of a client’s home and provide insight into what factors led to their estimate while pointing to potential home improvements to boost the predicted value. We tested 7 iterations of our model looking for the right combination of home attributes to give us a balance these factors
+### Model Approach 
+Knowing the model would be deployed by agents in their work with homeowners, we needed to produce a model that agents could use to accurately estimate the value of a client’s home and provide insight into what factors led to their estimate while pointing to potential home improvements to boost the predicted value. We tested 7 iterations of our model looking for the right combination of home attributes to give us a balance these factors
 
 ### Prediction accuracy (R2)
 Prediction precision (variance between train & test)
