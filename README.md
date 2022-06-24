@@ -61,24 +61,20 @@ With additional input from Open Door, we could further limit the scope of the mo
 
 
 
-For additional info, contact 
+## For additional info, contact 
+
+- Alex: alexfitzgerald90@gmail.com
+- Ogo: ogo.ndugba@gmail.com
+- Yuhkai: yuhkulele@gmail.com
 
 
 
-Alex: alexfitzgerald90@gmail.com
+## Repository Contents
 
-Ogo: ogo.ndugba@gmail.com
-
-Yuhkai: yuhkulele@gmail.com
-
-
-
-Repository Contents
-
-data
-images
-working notebooks
-.gitignore
-README.md
-Presentation.pdf
-Analysis.ipynb
+- data
+- images
+- working notebooks
+- .gitignore
+- README.md
+- Presentation.pdf
+- Analysis.ipynb
